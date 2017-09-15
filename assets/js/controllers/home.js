@@ -41,14 +41,6 @@ controllers.home_page = function(data, params){
         return;  
       }*/
 
-      // Check the current Notification permission.  
-      // If its denied, it's a permanent block until the  
-      // user changes the permission  
-      if (Notification.permission === 'denied') {  
-        console.warn('The user has blocked notifications.');  
-        return;  
-      }
-
       // Check if push messaging is supported  
       if (!('PushManager' in window)) {  
         console.warn('Push messaging isn\'t supported.');
@@ -57,6 +49,14 @@ controllers.home_page = function(data, params){
             'page-content',
             final_content
         ); 
+        return;  
+      }
+
+      // Check the current Notification permission.  
+      // If its denied, it's a permanent block until the  
+      // user changes the permission  
+      if (Notification.permission === 'denied') {  
+        console.warn('The user has blocked notifications.');  
         return;  
       }
 
