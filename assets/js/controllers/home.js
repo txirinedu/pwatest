@@ -92,3 +92,13 @@ controllers.home_frame_load = function() {
     var iframe = document.getElementById("homneIframe");  
     iframe.style.visibility="visible";
 }
+
+controllers.home_subscribe_user = function() {
+   alert("home_subscribe_user")
+    
+}
+
+controllers.home_unsubscribe_user = function() {
+   alert("home_unsubscribe_user")
+    
+}

@@ -4,7 +4,7 @@ templates.notif_on = function(data){
     	<br>
         <center>
             <!-- Colored FAB button with ripple -->
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <button onclick="controllers.home_unsubscribe_user()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
               <i class="material-icons">notifications</i>
             </button>
         </center>
@@ -20,7 +20,7 @@ templates.notif_off = function(data){
         <br>
         <center>
             <!-- Colored FAB button with ripple -->
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <button onclick="controllers.home_subscribe_user()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
               <i class="material-icons">notifications_off</i>
             </button>
         </center>
