@@ -95,6 +95,26 @@ controllers.home_frame_load = function() {
 
 controllers.home_subscribe_user = function() {
    alert("home_subscribe_user")
+   var applicationServerKey = urlB64ToUint8Array('BI6pCNNG-TV_EfOnR6y8w55YxASDV483cdpiWLuZfRTDW18MY0o4UVAo2TMYsDMQn9yffC7FWPBDFQOk2FZxtt8');
+    swRegistration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: applicationServerKey
+    })
+        .then(function (subscription) {
+        console.log('User is subscribed:', subscription);
+        console.log('webpush: ');
+        console.dir(webPush);
+        //this.isSubscribed = true;
+        localStorage.setItem("subscription", JSON.stringify(subscription));
+        //webPush.updateSubscriptionOnServer(subscription, userId);
+        //resolve(subscription);
+        //updateBtn();
+    })
+        .catch(function (err) {
+        console.log('Failed to subscribe the user: ', err);
+        //updateBtn();
+        //reject(err);
+    });
     
 }
 
@@ -102,3 +122,16 @@ controllers.home_unsubscribe_user = function() {
    alert("home_unsubscribe_user")
     
 }
+
+ function urlB64ToUint8Array(base64String) {
+        var padding = '='.repeat((4 - base64String.length % 4) % 4);
+        var base64 = (base64String + padding)
+            .replace(/\-/g, '+')
+            .replace(/_/g, '/');
+        var rawData = window.atob(base64);
+        var outputArray = new Uint8Array(rawData.length);
+        for (var i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+    };
