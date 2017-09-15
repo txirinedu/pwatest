@@ -21,7 +21,7 @@ templates.notif_off = function(data){
         <center>
             <!-- Colored FAB button with ripple -->
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-              <i class="material-icons">notifications off</i>
+              <i class="material-icons">notifications_off</i>
             </button>
         </center>
         </div>
@@ -37,7 +37,7 @@ templates.notif_disabled = function(data){
         <center>
             <!-- Colored FAB button with ripple -->
             <button class="mdl-button mdl-js-button mdl-button--fab" disabled>
-              <i class="material-icons">notifications off</i>
+              <i class="material-icons">notifications_off</i>
             </button>
         </center>
         </div>

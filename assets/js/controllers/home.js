@@ -31,7 +31,7 @@ controllers.home_page = function(data, params){
 
 
         // Are Notifications supported in the service worker?  
-      if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
+      /*if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
         console.warn('Notifications aren\'t supported.'); 
         var final_content = templates.notif_disabled(); 
          utils.render(
@@ -39,7 +39,7 @@ controllers.home_page = function(data, params){
             final_content
         );
         return;  
-      }
+      }*/
 
       // Check the current Notification permission.  
       // If its denied, it's a permanent block until the  
