@@ -7,10 +7,10 @@ views.home = function(data, params){
         'home_page_error'
     );*/
 
-    //controllers.show_loader('page-content');
-    utils.load_async(
+    controllers.show_loader('page-content');
+    /*utils.load_async(
             'home_page'
-        )
+        )*/
     
 
     /*
