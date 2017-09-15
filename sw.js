@@ -1,16 +1,16 @@
 var dataCacheName = 'shell-app-data-v1';
 var cacheName = 'shell-app-poc-v1';
 var filesToCache = [
-    '/',
-    '/index.html',
-    '/manifest.json',
+    '/pwatest/',
+    '/pwatest/index.html',
+    '/pwatest/manifest.json',
     /*'https://fonts.googleapis.com/css?family=Roboto',
     'https://fonts.googleapis.com/icon?family=Material+Icons', 
     'https://code.getmdl.io/1.3.0/material.indigo-pink.min.css',
     'https://code.getmdl.io/1.3.0/material.min.js',*/
-    '/assets/js/utils/utils.js',
-    '/assets/js/init.js',
-    '/assets/js/templates/loader.js'
+    '/pwatest/assets/js/utils/utils.js',
+    '/pwatest/assets/js/init.js',
+    '/pwatest/assets/js/templates/loader.js'
     
 
 ];
