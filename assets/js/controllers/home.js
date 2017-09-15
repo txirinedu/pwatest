@@ -57,14 +57,45 @@ controllers.home_page = function(data, params){
       // user changes the permission  
       if (Notification.permission === 'denied') {  
         console.warn('The user has blocked notifications.');  
-        return;  
-      }
-
-      var final_content = templates.notif_off(); 
+        var final_content = templates.notif_off(); 
          utils.render(
             'page-content',
             final_content
         );
+        return;  
+      } else {
+
+        swRegistration.pushManager.getSubscription()
+                .then(function (subscription) {
+                console.log('initPush');
+                console.log(subscription);
+                console.log('UPDATING LOCAL STORAGE ' + subscription);
+                localStorage.setItem("subscription", JSON.stringify(subscription));
+                if (subscription === null) {
+                    var final_content = templates.notif_off(); 
+                     utils.render(
+                        'page-content',
+                        final_content
+                    );
+                } else {
+                    var final_content = templates.notif_on(); 
+                     utils.render(
+                        'page-content',
+                        final_content
+                    );
+                }
+            }).catch(function (err) {
+                console.log(err);
+                var final_content = templates.notif_off(); 
+                     utils.render(
+                        'page-content',
+                        final_content
+                    );
+            });
+
+      }
+
+      
 
 
 
@@ -102,10 +133,10 @@ controllers.home_subscribe_user = function() {
     })
         .then(function (subscription) {
         console.log('User is subscribed:', subscription);
-        console.log('webpush: ');
-        console.dir(webPush);
         //this.isSubscribed = true;
         localStorage.setItem("subscription", JSON.stringify(subscription));
+
+        controllers.home_page();
         //webPush.updateSubscriptionOnServer(subscription, userId);
         //resolve(subscription);
         //updateBtn();
@@ -135,3 +166,19 @@ controllers.home_unsubscribe_user = function() {
         }
         return outputArray;
     };
+
+
+function updateSubscriptionOnServer (subscription, userId) {
+    // TODO: Send subscription to application server
+    if (subscription) {
+        //subscriptionJson.textContent = JSON.stringify(subscription);
+        this.pushService.addSubscription({ "token": subscription, "userId": userId, "id": "" })
+            .subscribe(function (rs) { return console.log(rs); }, function (er) { return console.log(er); }, function () { return console.log('ok'); });
+    }
+    else {
+        //subscriptionDetails.classList.add('is-invisible');
+        console.log('no subscription');
+        this.pushService.delSubscription(userId)
+            .subscribe(function (rs) { return console.log(rs); }, function (er) { return console.log(er); }, function () { return console.log('ok'); });
+    }
+};
