@@ -23,11 +23,37 @@ controllers.home_page = function(data, params){
     var final_content = hello_text + recent_posts;*/
    // var loader = templates.loader();
    // var final_content = loader + templates.larocheiframe();
-   var final_content = templates.larocheiframe();
+   /*var final_content = templates.larocheiframe();
     utils.append(
         'page-content',
         final_content
-    );    
+    );*/
+
+
+        // Are Notifications supported in the service worker?  
+      if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
+        console.warn('Notifications aren\'t supported.');  
+        return;  
+      }
+
+      // Check the current Notification permission.  
+      // If its denied, it's a permanent block until the  
+      // user changes the permission  
+      if (Notification.permission === 'denied') {  
+        console.warn('The user has blocked notifications.');  
+        return;  
+      }
+
+      // Check if push messaging is supported  
+      if (!('PushManager' in window)) {  
+        console.warn('Push messaging isn\'t supported.');  
+        return;  
+      }
+
+
+
+
+
 };
 
 controllers.home_page_error = function(data, params){
