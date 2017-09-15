@@ -32,7 +32,12 @@ controllers.home_page = function(data, params){
 
         // Are Notifications supported in the service worker?  
       if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
-        console.warn('Notifications aren\'t supported.');  
+        console.warn('Notifications aren\'t supported.'); 
+        var notif_disabled = templates.notif_disabled(); 
+         utils.render(
+            'page-content',
+            final_content
+        );
         return;  
       }
 
@@ -46,10 +51,20 @@ controllers.home_page = function(data, params){
 
       // Check if push messaging is supported  
       if (!('PushManager' in window)) {  
-        console.warn('Push messaging isn\'t supported.');  
+        console.warn('Push messaging isn\'t supported.');
+        var notif_disabled = templates.notif_disabled(); 
+         utils.render(
+            'page-content',
+            final_content
+        ); 
         return;  
       }
 
+      var notif_disabled = templates.notif_off(); 
+         utils.render(
+            'page-content',
+            final_content
+        );
 
 
 
